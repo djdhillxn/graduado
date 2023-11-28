@@ -62,7 +62,7 @@ After starting the application, you can:
 ## Future Scope
 Following features and improvements could be considered to enhance its functionality and user experience:
 - **Customizable Dashboard:** Prioritize certain applications or deadlines, document upload and storage.
-- **Production Environment Deployment:** Heroku app.
+- **Production Environment Deployment:** Use a production WSGI server instead. Or A Heroku app.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
