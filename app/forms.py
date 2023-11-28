@@ -1,12 +1,15 @@
 # In forms.py
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, TextAreaField, SelectField
+from wtforms import StringField, DateTimeField, DateField, TextAreaField, SelectField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, Optional
 
 class ApplicationForm(FlaskForm):
     school_name = StringField('School Name', validators=[DataRequired(), Length(max=1000)])
     program = StringField('Program', validators=[DataRequired(), Length(max=1000)])
-    deadline = DateField('Deadline', validators=[DataRequired()], format='%Y-%m-%d')
+    deadline = DateField('Deadline', validators=[DataRequired()], format='%Y-%m-%d')  # Updated to DateTimeField
+    application_status = SelectField('Application Status', choices=[('not_applied', 'Not Applied'), ('submitted', 'Submitted'), ('in_process', 'In Process')], validators=[DataRequired()])
+    fee_payment_done = BooleanField('Fee Payment Done')
+    lors_request = SelectField('LORs Request Status', choices=[('not_sent', 'Not Sent'), ('sent', 'Sent')], validators=[DataRequired()])
 
 
 class ProfessorForm(FlaskForm):

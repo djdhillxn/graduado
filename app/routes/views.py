@@ -33,7 +33,10 @@ def new_application():
         new_application = Application(
             school_name=form.school_name.data, 
             program=form.program.data, 
-            deadline=form.deadline.data, 
+            deadline=form.deadline.data,
+            application_status=form.application_status.data,
+            fee_payment_done=form.fee_payment_done.data,
+            lors_request=form.lors_request.data,
             user_id=current_user.id
         )
         db.session.add(new_application)
@@ -53,6 +56,9 @@ def edit_application(application_id):
         application.school_name = form.school_name.data
         application.program = form.program.data
         application.deadline = form.deadline.data
+        application.application_status = form.application_status.data
+        application.fee_payment_done = form.fee_payment_done.data
+        application.lors_request = form.lors_request.data
 
         db.session.commit()
         flash('Application updated successfully!', 'info')

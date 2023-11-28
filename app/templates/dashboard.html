@@ -5,12 +5,16 @@
     <a href="{{ url_for('main.new_application') }}" class="btn btn-primary">Add New Application</a>
 
     {% if applications %}
-        <table class="table mt-3">
+        <table class="table mt-3" id="applicationsTable">
             <thead>
                 <tr>
                     <th>School Name</th>
                     <th>Program</th>
                     <th>Deadline</th>
+                    <th>Application Status</th>
+                    <th>Fee Payment Done</th>
+                    <th>LORs Request</th>
+                    <th>Time Remaining</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,6 +24,10 @@
                     <td>{{ application.school_name }}</td>
                     <td>{{ application.program }}</td>
                     <td>{{ application.deadline }}</td>
+                    <td>{{ application.application_status }}</td>
+                    <td>{{ "Yes" if application.fee_payment_done else "No" }}</td>
+                    <td>{{ application.lors_request }}</td>
+                    <td id="countdown-{{ loop.index }}"></td>
                     <td>
                         <a href="{{ url_for('main.edit_application', application_id=application.id) }}" class="btn btn-sm btn-secondary">Edit</a>
                         <a href="{{ url_for('main.delete_application', application_id=application.id) }}" class="btn btn-sm btn-danger">Delete</a>
@@ -31,4 +39,30 @@
     {% else %}
         <p class="mt-3">No applications to display. Start by <a href="{{ url_for('main.new_application') }}">adding a new application</a>.</p>
     {% endif %}
+
+    <!-- JavaScript for countdown (same as previous implementation) -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var rows = document.getElementById('applicationsTable').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            Array.from(rows).forEach((row, index) => {
+                var deadline = new Date(row.cells[2].innerText);
+                var countdownCell = document.getElementById(`countdown-${index + 1}`);
+                var x = setInterval(function() {
+                    var now = new Date().getTime();
+                    var distance = deadline - now;
+                    if (distance < 0) {
+                        clearInterval(x);
+                        countdownCell.innerHTML = "Expired";
+                    } else {
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        countdownCell.innerHTML = days + "d " + hours + "h ";
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+
 {% endblock %}
+
