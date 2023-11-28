@@ -12,6 +12,12 @@ Graduate School Application Tracker is a Flask-based web application designed to
 - Responsive design for various devices
 
 
+## Tech Stack
+- **Backend**: Flask (Python)
+- **Database**: SQLite
+- **Frontend**: HTML(Jinja2), JavaScript
+- **Libraries/Frameworks**: Flask-WTF, Flask-SQLAlchemy, Flask-Migrate, Flask-Login
+
 ## Installation
 
 ### Prerequisites
@@ -30,13 +36,13 @@ cd graduado
 Create a virtual environment to manage the dependencies:
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scriptsctivate`
+source venv/bin/activate  # On Windows, use `venv\Scripts\\activate\`
 ```
 
 ### Install Dependencies
 Install all the required packages:
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Environment Variables
@@ -44,17 +50,20 @@ Set up the necessary environment variables. Create a `.env` file in the root dir
 ```env
 SECRET_KEY=your_secret_key
 DATABASE_URL=sqlite:///db.sqlite  # or your database URI
-FLASK_APP=run.py
-FLASK_ENV=development  # Set to 'production' in a production environment
 ```
 
 ### Initialize the Database
-Run the following commands to set up your database:
+Before initializing the database, make sure the \`migrations\` folder is present. If not, run:
 ```bash
 flask db init
+```
+
+Then, run the following commands to set up your database:
+```bash
 flask db migrate -m "Initial migration."
 flask db upgrade
 ```
+
 
 ### Running the Application
 Start the server with:

@@ -1,1 +1,7 @@
+.env
+venv/
 __pycache__/
+instance/
+migrations/  # Optional, based on your project's collaboration needs
+*.pyc
+*.sqlite
