@@ -49,7 +49,6 @@ pip3 install -r requirements.txt
 Set up the necessary environment variables. Create a `.env` file in the root directory and add the following (replace values as needed):
 ```env
 SECRET_KEY=your_secret_key
-DATABASE_URL=sqlite:///db.sqlite  # or your database URI
 ```
 
 ### Initialize the Database
@@ -64,7 +63,6 @@ flask db migrate -m "Initial migration."
 flask db upgrade
 ```
 
-
 ### Running the Application
 Start the server with:
 ```bash
@@ -78,12 +76,16 @@ After starting the application, you can:
 - Log in with your credentials.
 - Add, view, edit, or delete your graduate school applications, letters of recommendation, and personal statements via the dashboard.
 
+## Future Scope
 
-## Deployment
-For deploying to a production environment, additional setup for a production-ready server like Gunicorn and a web server like Nginx is recommended.
+Following features and improvements could be considered to enhance its functionality and user experience:
+
+1. **Customizable Dashboard:** Customize and prioritize certain applications or deadlines.
+
+2. **Production Environment Deployment:** Heroku app.
 
 ## Contributing
-Contributions to the Graduate School Application Tracker are welcome. Please ensure to update tests as appropriate.
+Contributions are more than welcome.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
