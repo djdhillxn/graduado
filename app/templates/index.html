@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Welcome to the Graduate School Application Tracker</h1>
     <p class="lead">Your one-stop solution to track and manage all your graduate school applications.</p>
-    
+
     <h2>Why Use GradTracker?</h2>
     <p>GradTracker simplifies the process of tracking your applications for various graduate programs. With our easy-to-use dashboard, you can:</p>
     <ul>
@@ -11,6 +11,15 @@
         <li>Organize application deadlines and important dates.</li>
         <li>Edit and update your application details as needed.</li>
         <li>Manage your applications in one centralized, accessible location.</li>
+        <li>Track your Letters of Recommendation from professors.</li>
+        <li>Organize and maintain personal statements.</li>
+    </ul>
+
+    <h2>New Features</h2>
+    <p>Exciting new features to enhance your application tracking experience:</p>
+    <ul>
+        <li><strong>Letters of Recommendation:</strong> Keep track of your recommendation letters, their status, and manage them efficiently.</li>
+        <li><strong>Personal Statements:</strong> Organize your personal statements and edit them as per your application needs.</li>
     </ul>
 
     <h2>Getting Started</h2>
@@ -19,7 +28,7 @@
         <li><strong>Register:</strong> Create a free account by navigating to the <a href="{{ url_for('auth.signup') }}">Registration Page</a>.</li>
         <li><strong>Login:</strong> Once registered, log in to access your personalized dashboard.</li>
         <li><strong>Add Applications:</strong> Start adding your graduate school applications with all necessary details.</li>
-        <li><strong>Track and Manage:</strong> View, edit, and manage your applications all in one place.</li>
+        <li><strong>Track and Manage:</strong> View, edit, and manage your applications, letters of recommendation, and personal statements all in one place.</li>
     </ol>
 
     <p class="mt-4">Ready to take the next step in your graduate school journey? <a href="{{ url_for('auth.signup') }}" class="btn btn-primary">Sign Up Now</a></p>
