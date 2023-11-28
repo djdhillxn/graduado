@@ -64,8 +64,5 @@ Following features and improvements could be considered to enhance its functiona
 - **Customizable Dashboard:** Prioritize certain applications or deadlines, document upload and storage.
 - **Production Environment Deployment:** Heroku app.
 
-## Contributing
-Contributions are more than welcome.
-
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
