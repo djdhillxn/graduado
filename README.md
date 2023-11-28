@@ -15,20 +15,20 @@ Graduate School Application Tracker is a Flask-based web application designed to
 ## Tech Stack
 - **Backend**: Flask (Python)
 - **Database**: SQLite
-- **Frontend**: HTML(Jinja2), JavaScript
+- **Frontend**: HTML(Jinja2), Bootstrap, JavaScript
 - **Libraries/Frameworks**: Flask-WTF, Flask-SQLAlchemy, Flask-Migrate, Flask-Login
 
 ## Installation
 
 ### Prerequisites
 - Python 3.x
-- pip (Python package manager)
-- Virtual environment (recommended)
+- pip3 
+- Virtual environment (optinal)
 
 ### Clone the Repository
-First, clone the repository to your local machine:
+First, clone to local machine:
 ```bash
-git clone https://github.com/your-username/graduado.git
+git clone https://github.com/djdhillxn/graduado.git
 cd graduado
 ```
 
