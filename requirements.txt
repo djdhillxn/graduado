@@ -4,5 +4,6 @@ Flask-SQLAlchemy==2.4.4
 Flask-WTF==0.14.3
 Flask-Migrate
 Werkzeug==1.0.1
+email_validator
 # ... other dependencies
 
