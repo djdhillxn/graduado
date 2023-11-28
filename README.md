@@ -15,7 +15,6 @@ Graduate School Application Tracker is a Flask-based web application designed to
 ### Prerequisites
 - Python 3.x
 - pip3 
-- Virtual environment (optinal)
 
 ### Clone the Repository
 First, clone to local machine:
@@ -62,13 +61,11 @@ After starting the application, you can:
 
 ## Future Scope
 Following features and improvements could be considered to enhance its functionality and user experience:
-
-1. **Customizable Dashboard:** Prioritize certain applications or deadlines, document upload and storage.
-
-2. **Production Environment Deployment:** Heroku app.
+- **Customizable Dashboard:** Prioritize certain applications or deadlines, document upload and storage.
+- **Production Environment Deployment:** Heroku app.
 
 ## Contributing
 Contributions are more than welcome.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
