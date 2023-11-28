@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Profile</h1>
+    <a href="{{ url_for('main.new_professor') }}" class="btn btn-primary">Add New Letter of Recommendation</a>
+
+    {% if professors %}
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Professor Name</th>
+                    <th>Letter Draft</th>
+                    <th>Contact Info</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for professor in professors %}
+                <tr>
+                    <td>{{ professor.name }}</td>
+                    <td>{{ professor.letter_draft }}</td>
+                    <td>{{ professor.contact_info }}</td>
+                    <td>{{ professor.status }}</td>
+                    <td>
+                        <a href="{{ url_for('main.edit_professor', professor_id=professor.id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="{{ url_for('main.delete_professor', professor_id=professor.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="mt-3">No letters of recommendation to display. Start by <a href="{{ url_for('main.new_professor') }}">adding a new letter</a>.</p>
+    {% endif %}
+{% endblock %}
+
