@@ -15,3 +15,8 @@ class ProfessorForm(FlaskForm):
     contact_info = StringField('Contact Info', validators=[Optional(), Email(), Length(max=300)])
     status = SelectField('Status', choices=[('pending', 'Pending'), ('submitted', 'Submitted'), ('received', 'Received')], validators=[DataRequired()])
 
+
+class StatementForm(FlaskForm):
+    name = StringField('Statement Name', validators=[DataRequired(), Length(max=200)])
+    statement = TextAreaField('Statement', validators=[DataRequired(), Length(max=5000)])
+

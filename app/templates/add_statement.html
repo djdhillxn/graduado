@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Add New Statement</h1>
+    <form action="{{ url_for('main.new_statement') }}" method="post" class="mt-4">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label }}
+            {{ form.name(class="form-control") }}
+            {% if form.name.errors %}
+                <div class="alert alert-danger">{{ form.name.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.statement.label }}
+            {{ form.statement(class="form-control") }}
+            {% if form.statement.errors %}
+                <div class="alert alert-danger">{{ form.statement.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Statement</button>
+    </form>
+{% endblock %}
+

@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(200))
     applications = db.relationship('Application', backref='user', lazy=True)  # Relationship to Application
     professors = db.relationship('Professor', backref='user', lazy=True)  # Relationship to Professor
-
+    statements = db.relationship('Statement', backref='user', lazy=True)  # Add this line to the User class
 
 class Application(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,4 +26,11 @@ class Professor(db.Model):
     contact_info = db.Column(db.String(300))
     status = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class Statement(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    statement = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 

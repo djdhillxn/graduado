@@ -1,9 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from ..models.models import Application, Professor
+from ..models.models import Application, Professor, Statement
 from .. import db
-
-from app.forms import ApplicationForm, ProfessorForm  
+from app.forms import ApplicationForm, ProfessorForm, StatementForm
 
 main = Blueprint('main', __name__)
 
@@ -22,8 +21,8 @@ def dashboard():
 @login_required
 def profile():
     professors = Professor.query.filter_by(user_id=current_user.id).all()
-    return render_template('profile.html', professors=professors)
-
+    statements = Statement.query.filter_by(user_id=current_user.id).all()  # Add this line
+    return render_template('profile.html', professors=professors, statements=statements)  # Update this line
 
 
 @main.route('/application/new', methods=['GET', 'POST'])
@@ -125,3 +124,46 @@ def delete_professor(professor_id):
     flash('Letter of recommendation deleted!', 'warning')
     return redirect(url_for('main.profile'))
 
+
+@main.route('/statement/new', methods=['GET', 'POST'])
+@login_required
+def new_statement():
+    form = StatementForm()
+    if form.validate_on_submit():
+        new_statement = Statement(
+            name=form.name.data,
+            statement=form.statement.data,
+            user_id=current_user.id
+        )
+        db.session.add(new_statement)
+        db.session.commit()
+        flash('New statement added successfully!', 'success')
+        return redirect(url_for('main.profile'))
+
+    return render_template('add_statement.html', form=form)
+
+@main.route('/statement/edit/<int:statement_id>', methods=['GET', 'POST'])
+@login_required
+def edit_statement(statement_id):
+    statement = Statement.query.get_or_404(statement_id)
+    form = StatementForm(obj=statement)
+
+    if form.validate_on_submit():
+        statement.name = form.name.data
+        statement.statement = form.statement.data
+
+        db.session.commit()
+        flash('Statement updated successfully!', 'info')
+        return redirect(url_for('main.profile'))
+
+    return render_template('edit_statement.html', form=form, statement_id=statement_id)
+
+@main.route('/statement/delete/<int:statement_id>')
+@login_required
+def delete_statement(statement_id):
+    statement = Statement.query.get_or_404(statement_id)
+    db.session.delete(statement)
+    db.session.commit()
+
+    flash('Statement deleted!', 'warning')
+    return redirect(url_for('main.profile'))
