@@ -1,13 +1,16 @@
 # Graduate School Application Tracker
 
 ## Description
-Graduate School Application Tracker is a Flask-based web application designed to help users track and manage their applications to various graduate programs. It offers features like adding, editing, and deleting application records, user authentication, and a dashboard for easy management.
+
+Graduate School Application Tracker is a Flask-based web application designed to help users track and manage their applications to various graduate programs. It features user authentication, a dashboard for managing applications, and functionality for tracking letters of recommendation and personal statements.
+
 
 ## Features
 - User registration and login
 - Dashboard for tracking graduate school applications
-- Add, edit, and delete functionality for application records
+- Add, edit, and delete functionality for application records, letters of recommendation, and personal statements
 - Responsive design for various devices
+
 
 ## Installation
 
@@ -64,7 +67,8 @@ Access the application through `http://127.0.0.1:5000/` in your web browser.
 After starting the application, you can:
 - Register a new user account.
 - Log in with your credentials.
-- Add, view, edit, or delete your graduate school applications via the dashboard.
+- Add, view, edit, or delete your graduate school applications, letters of recommendation, and personal statements via the dashboard.
+
 
 ## Deployment
 For deploying to a production environment, additional setup for a production-ready server like Gunicorn and a web server like Nginx is recommended.
