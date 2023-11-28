@@ -1,0 +1,22 @@
+<!-- form_template.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>{{ action }} {{ item_type }}</h1>
+    <form action="{{ url }}" method="post" class="mt-4">
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+            {% if field.type != 'CSRFTokenField' %}
+                <div class="form-group">
+                    {{ field.label }}
+                    {{ field(class="form-control") }}
+                    {% if field.errors %}
+                        <div class="alert alert-danger">{{ field.errors[0] }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">{{ action }}</button>
+    </form>
+{% endblock %}
+

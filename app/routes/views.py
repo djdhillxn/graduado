@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from ..models.models import Application, Professor, Statement
-from .. import db
+from app import app, db
+from app.models.models import Application, Professor, Statement
 from app.forms import ApplicationForm, ProfessorForm, StatementForm
 
 main = Blueprint('main', __name__)
@@ -43,8 +43,8 @@ def new_application():
         db.session.commit()
         flash('New application added successfully!', 'success')
         return redirect(url_for('main.dashboard'))
-
-    return render_template('add_application.html', form=form)
+    return render_template('form_template.html', action='Add', item_type='Application', form=form, url=url_for('main.new_application'))
+    #return render_template('add_application.html', form=form)
 
 @main.route('/application/edit/<int:application_id>', methods=['GET', 'POST'])
 @login_required
@@ -63,8 +63,8 @@ def edit_application(application_id):
         db.session.commit()
         flash('Application updated successfully!', 'info')
         return redirect(url_for('main.dashboard'))
-
-    return render_template('edit_application.html', form=form, application_id=application_id)
+    return render_template('form_template.html', action='Edit', item_type='Application', form=form, url=url_for('main.edit_application', application_id=application_id))
+    #return render_template('edit_application.html', form=form, application_id=application_id)
 
 @main.route('/application/delete/<int:application_id>')
 @login_required
@@ -96,9 +96,8 @@ def new_professor():
         flash('New letter of recommendation added!', 'success')
         return redirect(url_for('main.profile'))
 
-    return render_template('add_professor.html', form=form)  # Template for adding professor
-
-
+    #return render_template('add_professor.html', form=form)  # Template for adding professor
+    return render_template('form_template.html', action='Add', item_type='Professor', form=form, url=url_for('main.new_professor'))
 
 
 @main.route('/professor/edit/<int:professor_id>', methods=['GET', 'POST'])
@@ -117,7 +116,9 @@ def edit_professor(professor_id):
         flash('Letter of recommendation updated successfully!', 'info')
         return redirect(url_for('main.profile'))
 
-    return render_template('edit_professor.html', form=form, professor_id=professor_id)
+    #return render_template('edit_professor.html', form=form, professor_id=professor_id)
+    return render_template('form_template.html', action='Edit', item_type='Professor', form=form, url=url_for('main.edit_professor', professor_id=professor_id))
+
 
 
 @main.route('/professor/delete/<int:professor_id>')
@@ -145,8 +146,8 @@ def new_statement():
         db.session.commit()
         flash('New statement added successfully!', 'success')
         return redirect(url_for('main.profile'))
-
-    return render_template('add_statement.html', form=form)
+    return render_template('form_template.html', action='Add', item_type='Statement', form=form, url=url_for('main.new_statement'))
+    #return render_template('add_statement.html', form=form)
 
 @main.route('/statement/edit/<int:statement_id>', methods=['GET', 'POST'])
 @login_required
@@ -161,8 +162,8 @@ def edit_statement(statement_id):
         db.session.commit()
         flash('Statement updated successfully!', 'info')
         return redirect(url_for('main.profile'))
-
-    return render_template('edit_statement.html', form=form, statement_id=statement_id)
+    return render_template('form_template.html', action='Edit', item_type='Statement', form=form, url=url_for('main.edit_statement', statement_id=statement_id))
+    #return render_template('edit_statement.html', form=form, statement_id=statement_id)
 
 @main.route('/statement/delete/<int:statement_id>')
 @login_required

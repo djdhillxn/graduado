@@ -6,8 +6,8 @@ def list_files(startpath):
         if '.git' in dirs:
             dirs.remove('.git')
         
-        if '__pycache__' in dirs:
-            dirs.remove('__pycache__')
+        #if '__pycache__' in dirs:
+        #    dirs.remove('__pycache__')
 
         level = root.replace(startpath, '').count(os.sep)
         indent = ' ' * 4 * (level)
