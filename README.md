@@ -17,7 +17,6 @@ Graduate School Application Tracker is a Flask-based web application designed to
 - pip3 
 
 ### Clone the Repository
-First, clone to local machine:
 ```bash
 git clone https://github.com/djdhillxn/graduado.git
 cd graduado
